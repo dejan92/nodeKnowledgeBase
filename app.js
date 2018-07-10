@@ -72,12 +72,12 @@ app.use(expressValidator({
     }
 }));
 
-// //Pasport Config
-// require('./config/passport')(passport);
+//Pasport Config
+require('./config/passport')(passport);
 
-// //Passport MIddleware
-// app.use(passport.initialize());
-// app.use(passport.session());
+//Passport MIddleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Home Route
 app.get('/', (req, res) => {
