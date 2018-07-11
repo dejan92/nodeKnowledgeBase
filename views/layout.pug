@@ -15,16 +15,22 @@ html
                         a.nav-item.nav-link(href='/')
                             | Home 
                             span.sr-only 
-                        a.nav-item.nav-link(href='/articles/add')
-                            | Add Article 
-                            span.sr-only
+                        if user
+                            a.nav-item.nav-link(href='/articles/add')
+                                | Add Article 
+                                span.sr-only
                     .navbar-nav.navbar-right
-                        a.nav-item.nav-link(href='/users/register')
-                            | Register 
-                            span.sr-only
-                        a.nav-item.nav-link(href='/users/login')
-                            | Login 
-                            span.sr-only 
+                        if user
+                            a.nav-item.nav-link(href='/users/logout')
+                                | Logout 
+                                span.sr-only 
+                        else
+                            a.nav-item.nav-link(href='/users/register')
+                                | Register 
+                                span.sr-only
+                            a.nav-item.nav-link(href='/users/login')
+                                | Login 
+                                span.sr-only 
 
         .container
             != messages('message', locals)

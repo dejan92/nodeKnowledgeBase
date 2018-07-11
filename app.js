@@ -79,6 +79,12 @@ require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
+//initialize global variable user
+app.get('*', (req,res,next)=>{
+    res.locals.user = req.user || null;
+    next();
+});
+
 //Home Route
 app.get('/', (req, res) => {
     Article.find({}, (err, articles) => {
@@ -101,5 +107,5 @@ app.use('/articles', articles);
 app.use('/users', users);
 
 //Start Server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT} ...`));
